@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Classtrophobic</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <style>
+    main { display: block; max-width: 360px; margin: auto; }
+    h2, h3, h5 , h6 { text-align: center; }
+    body { font-family: sans-serif; }
+    pre { background: #f8f8f8; padding: 16px; }
+    .green { color; #0FA; }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+    <script async src="classtrophobic.min.js"></script>
+    <script defer src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+    <script defer src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/javascript.min.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', function () { hljs.initHighlightingOnLoad(); }, false);</script>
+  </head>
+  <body>
+    <main>
+    <h2>Classtrophobic</h2>
+    <h3>Zero Runtime, Babel Proof, Classes.</h3>
+    <pre><code class="javascript">const Class = require('classtrophobic');
+
+const List = Class({
+  extends: Array,
+  static: {import:(o) => List.from(o)},
+  constructor(...args) {
+    this.super();
+    this.push(...args);
+  },
+  push(...args) {
+    this.super.push(...args);
+    return this;
+  },
+  get size() {
+    return this.length;
+  }
+});</code></pre>
+    <h5><a href="test.html">Test Page</a> - if <span class="green">green</span> it works!</h5>
+    <h6>by Andrea Giammarchi, on <a href="https://github.com/WebReflection/classtrophobic/">GitHib</a></h6>
+    </main>
+  </body>
+</html>

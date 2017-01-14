@@ -2,17 +2,26 @@
   "name": "classtrophobic",
   "version": "0.0.0",
   "description": "coming soon",
-  "main": "index.js",
+  "main": "classtrophobic.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node test.js",
+    "size": "cat classtrophobic.js | wc -c;cat classtrophobic.min.js | wc -c;gzip -c classtrophobic.min.js | wc -c",
+    "minify": "babili classtrophobic.js -o classtrophobic.min.js",
+    "clean": "sed -ie 's#//[^\\n]*##' classtrophobic.min.js; sleep 1; rm classtrophobic.min.jse"
   },
   "keywords": [
     "class",
     "custom",
     "elements",
     "native",
-    "extend"
+    "extend",
+    "extends",
+    "transpilable"
   ],
   "author": "Andrea Giammarchi",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "babili": "0.0.9",
+    "consolemd": "^0.1.2"
+  }
 }

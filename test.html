@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Classtrophobic Test Page</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <style>
+    my-div { cursor: pointer; }
+    my-element, my-div, button[is=my-button] { margin: 8px; }
+    </style>
+    <script defer src="//cdnjs.cloudflare.com/ajax/libs/document-register-element/1.3.0/document-register-element.js"></script>
+    <script>
+const Class=((a,b)=>{'use strict';/*! (C) 2017 Andrea Giammarchi - MIT Style License */const
+c=b.has,e=b.get,f=b.set,g=b.ownKeys,h=b.deleteProperty,i=b.defineProperty,j=b.apply,l=b.construct,m=a.getPrototypeOf,n=a.setPrototypeOf,o=a.defineProperties,q=a.getOwnPropertyDescriptor,
+s={isExtensible:x=>b.isExtensible(x.self),preventExtensions:x=>b.preventExtensions(x.self),getPrototypeOf:x=>m(x.self),setPrototypeOf:(x,y)=>n(x.self,y),getOwnPropertyDescriptor:(x,y)=>q(x.self,y),has:(x,y)=>c(x.self,y),get:(x,y,z)=>{
+if('super'===y&&!('self'in x))return function(){return x.self=l(x.super,arguments,x.class)};
+const A=e(x.self,y);return'function'==typeof A?function(){return A.apply(this===z?x.self:this,arguments)}:A},set:(x,y,z)=>f(x.self,y,z),deleteProperty:(x,y)=>h(x.self,y),defineProperty:(x,y,z)=>i(x.self,y,z),ownKeys:x=>g(x.self),apply:(x,y,z)=>j(x.self,y,z),construct:(x,y,z)=>l(x.self,y,z)},
+u={get:(x,y)=>function(){const z=x[y],A=m(x);let B,C=A;do C=m(C);while(z===C[y]);try{B=n(x,C)[y].apply(x,arguments)}finally{n(x,A)}return B}},
+w=new Set(['constructor','extends','static']);return function(y){const z=y.constructor,A=y.static,B=y.extends,C=y.hasOwnProperty('constructor')?B?class extends B{constructor(){const F={super:B,class:C};return z.apply(new Proxy(F,s),arguments)||F.self}}:class{constructor(){return z.apply(this,arguments)||this}}:B?class extends B{}:class{},D={super:{get(){return new Proxy(C,u)}}},E={super:{get(){return new Proxy(this,u)}}};return g(y).filter(F=>!w.has(F)).forEach(F=>{E[F]=q(y,F),E[F].enumerable=!1}),o(C.prototype,E),A&&g(A).forEach(F=>{D[F]=q(A,F),D[F].enumerable=!1}),o(C,D)}})(Object,Reflect);try{module.exports=Class}catch(a){}
+
+    this.onload = function () {
+      // Native Subclass
+      const List = Class({
+        extends: Array,
+        constructor(...args) {
+          this.super().push(...args);
+        }
+      });
+
+      const ml = new List(1, 2, 3);
+      console.log(
+        ml instanceof Array,  // true
+        ml instanceof List,   // true
+        ml                    // [1, 2, 3]
+      );
+
+      // - - - - - - - - - - - - - - - - - - - - - -
+
+      // Custom Element
+      const MyElement = Class({
+        extends: HTMLElement
+      });
+      customElements.define('my-element', MyElement);
+
+      document.body.appendChild(new MyElement).textContent = 'my element';
+      document.body.appendChild(
+        document.createElement('my-element')
+      ).textContent = 'my element';
+
+      // - - - - - - - - - - - - - - - - - - - - - -
+
+      // Custom Element with super()
+      const MyDiv = Class({
+        extends: HTMLElement,
+        constructor(...args) {
+          this.super(...args);
+          this.addEventListener('click', console.log);
+        }
+      });
+      customElements.define('my-div', MyDiv);
+
+      document.body.appendChild(new MyDiv).textContent = 'my div';
+      document.body.appendChild(
+        document.createElement('my-div')
+      ).textContent = 'my div';
+
+      // - - - - - - - - - - - - - - - - - - - - - -
+
+      // Custom Element native extend with super()
+      // requires Custom Elements V1 polyfill
+      // https://github.com/WebReflection/document-register-element
+      const MyButton = Class({
+        extends: HTMLButtonElement,
+        constructor(...args) {
+          this.super(...args);
+          this.addEventListener('click', console.log);
+        }
+      });
+
+      customElements.define('my-button', MyButton, {extends: 'button'});
+
+      document.body.appendChild(new MyButton).textContent = 'my button';
+      document.body.appendChild(
+        document.createElement('button', {is:'my-button'})
+      ).textContent = 'my button';
+
+      document.body.style.backgroundColor = '#0FA';
+
+    };
+    </script>
+  </head>
+  <body></body>
+</html>
