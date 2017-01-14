@@ -18,61 +18,9 @@ const List = Class({
 });
 ```
 
-
-
-### The Problem With Native JS Classes
-While ES2015 Classes have just some static limitation during their definition,
-there is a real problem with JS classes caused by their transpiled counterpart.
-
-[Try for yourself](http://babeljs.io/repl/#?babili=false&evaluate=false&lineWrap=false&presets=es2015&experimental=false&loose=false&spec=false&code=class%20NativeList%20extends%20Array%20%7B%0A%20%20constructor(a%2C%20b%2C%20c)%20%7B%0A%20%20%20%20super(a%2C%20b)%3B%0A%20%20%20%20this.push(c)%3B%0A%20%20%7D%0A%20%20method(...args)%20%7B%0A%20%20%20%20this.push(...args)%3B%0A%20%20%7D%0A%7D%0A%0Aconst%20nl%20%3D%20new%20NativeList(1%2C%202%2C%203)%3B%0Aconsole.log(nl%20instanceof%20NativeList)%3B%20%2F%2F%20false%0Anl.method()%3B%20%2F%2F%20throws%20nl.method%20is%20not%20a%20function&playground=true) the following snippet:
-
-```js
-class NativeList extends Array {
-  constructor(a, b, c) {
-    super(a, b);
-    this.push(c);
-  }
-  method(...args) {
-    this.push(...args);
-  }
-}
-
-const nl = new NativeList(1, 2, 3);
-console.log(nl instanceof NativeList); // false
-nl.method(); // throws nl.method is not a function
-```
-
-Not only transpiled code makes it [impossible to reliably subclass](https://github.com/babel/babel/issues/4480) and use all language features,
-the amount of runtime injected on the code is quite consistent, as you can see on [the right panel](http://babeljs.io/repl/#?babili=false&evaluate=false&lineWrap=false&presets=es2015&experimental=false&loose=false&spec=false&code=class%20NativeList%20extends%20Array%20%7B%0A%20%20constructor(a%2C%20b%2C%20c)%20%7B%0A%20%20%20%20super(a%2C%20b)%3B%0A%20%20%20%20this.push(c)%3B%0A%20%20%7D%0A%20%20method(...args)%20%7B%0A%20%20%20%20this.push(...args)%3B%0A%20%20%7D%0A%7D%0A%0Aconst%20nl%20%3D%20new%20NativeList(1%2C%202%2C%203)%3B%0Aconsole.log(nl%20instanceof%20NativeList)%3B%20%2F%2F%20false%0Anl.method()%3B%20%2F%2F%20throws%20nl.method%20is%20not%20a%20function&playground=true) of the babel repl page.
-
-Now, [compare](http://babeljs.io/repl/#?babili=false&evaluate=false&lineWrap=false&presets=es2015&experimental=false&loose=false&spec=false&code=const%20List%20%3D%20Class(%7B%0A%20%20extends%3A%20Array%2C%0A%20%20constructor(a%2C%20b%2C%20c)%20%7B%0A%20%20%20%20this.super(a%2C%20b)%3B%0A%20%20%20%20this.push(c)%3B%0A%20%20%7D%2C%0A%20%20method(...args)%20%7B%0A%20%20%20%20this.push(...args)%3B%0A%20%20%7D%0A%7D)%3B&playground=true) the previous code with the current one:
-
-```js
-const List = Class({
-  extends: Array,
-  constructor(a, b, c) {
-    this.super(a, b);
-    this.push(c);
-  },
-  method(...args) {
-    this.push(...args);
-  }
-});
-```
-
-Not only the final size is basically the same of the initial one, but there's not a single interference in terms of class definition.
-
-Strawberry on top, there are no runtime surprises with the expected instance and behavior, everything works as expected.
-
-```js
-const cl = new List(1, 2, 3);
-console.log(cl instanceof Array); // true
-console.log(cl instanceof List);  // true
-// species also work like native classes
-console.log(cl.slice() instanceof List); // true
-cl.method(4, 5); // cl is now [1, 2, 3, 4, 5]
-```
-
+### Don't Miss [The Related Post](https://medium.com/@WebReflection/a-case-for-js-classes-without-classes-9e60b3b5992#.oh0mweilj)
+If you want to know more about this project use cases, and also why it was born in the first place,
+[read the story in Medium](https://medium.com/@WebReflection/a-case-for-js-classes-without-classes-9e60b3b5992#.oh0mweilj).
 
 
 ### Ready for Refactory
