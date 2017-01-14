@@ -1,0 +1,18 @@
+{
+  "name": "classtrophobic",
+  "version": "0.0.0",
+  "description": "coming soon",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "class",
+    "custom",
+    "elements",
+    "native",
+    "extend"
+  ],
+  "author": "Andrea Giammarchi",
+  "license": "MIT"
+}
