@@ -68,6 +68,8 @@ Strawberry on top, there are no runtime surprises with the expected instance and
 const cl = new List(1, 2, 3);
 console.log(cl instanceof Array); // true
 console.log(cl instanceof List);  // true
+// species also work like native classes
+console.log(cl.slice() instanceof List); // true
 cl.method(4, 5); // cl is now [1, 2, 3, 4, 5]
 ```
 
