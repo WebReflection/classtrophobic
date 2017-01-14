@@ -3,3 +3,4 @@ node_modules/*
 .gitignore
 index.html
 test.html
+test.js
