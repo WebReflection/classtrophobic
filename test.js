@@ -149,6 +149,103 @@ const E = Class({
 console.assert(obj.splice(0, obj.length).join('-') === 'a-b-c-d-e');
 (new E).holed();
 console.assert(obj.splice(0, obj.length).join('-') === 'ha-hc-hd');
+(new D).holed();
+console.assert(obj.splice(0, obj.length).join('-') === 'ha-hc-hd');
+
+
+
+console.log('Constructor.super()');
+const A2 = Class({
+  constructor() {
+    obj.push('A2');
+  }
+});
+const B2 = Class({
+  extends: A2,
+  constructor() {
+    this.super();
+    obj.push('B2');
+  }
+});
+const C2 = Class({
+  extends: B2,
+  constructor() {
+    this.super();
+    obj.push('C2');
+  }
+});
+(new C2);
+console.assert(obj.splice(0, obj.length).join('-') === 'A2-B2-C2');
+
+
+
+console.log('static.method()');
+const AS2 = Class({
+  static: {
+    method() {
+      obj.push('AS2');
+    }
+  }
+});
+const BS2 = Class({
+  extends: AS2,
+  static: {
+    method() {
+      this.super.method();
+      obj.push('BS2');
+    }
+  }
+});
+const CS2 = Class({
+  extends: BS2,
+  static: {
+    method() {
+      this.super.method();
+      obj.push('CS2');
+    }
+  }
+});
+CS2.method();
+console.assert(obj.splice(0, obj.length).join('-') === 'AS2-BS2-CS2');
+
+
+
+console.log('static.holes()');
+const AS3 = Class({
+  static: {
+    method() {
+      obj.push('AS3');
+    }
+  }
+});
+const BS3 = Class({
+  extends: AS3
+});
+const CS3 = Class({
+  extends: BS3,
+  static: {
+    method() {
+      this.super.method();
+      obj.push('CS3');
+    }
+  }
+});
+const DS3 = Class({
+  extends: CS3,
+  static: {
+    method() {
+      this.super.method();
+      obj.push('DS3');
+    }
+  }
+});
+const ES3 = Class({
+  extends: DS3
+});
+ES3.method();
+console.assert(obj.splice(0, obj.length).join('-') === 'AS3-CS3-DS3');
+
+
 
 console.log('#green(*✔* OK)');
 console.log('');

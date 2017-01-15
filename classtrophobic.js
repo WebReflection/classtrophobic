@@ -8,7 +8,6 @@ const Class = ((Object, Reflect) => {'use strict';
     ownProps = Reflect.ownKeys,
     delProp = Reflect.deleteProperty,
     defProp = Reflect.defineProperty,
-    reApply = Reflect.apply,
     reConstruct = Reflect.construct,
     gPO = Object.getPrototypeOf,
     sPO = Object.setPrototypeOf,
@@ -39,18 +38,29 @@ const Class = ((Object, Reflect) => {'use strict';
       deleteProperty: (p, k) => delProp(p.self, k),
       defineProperty: (p, k, d) => defProp(p.self, k, d),
       ownKeys: (p) => ownProps(p.self),
-      apply: (p, self, args) => reApply(p.self, self, args),
+      apply: (p, self, args) => Reflect.apply(p.self, self, args),
       construct: (p, args, t) => reConstruct(p.self, args, t)
     },
     // used to Proxy any other this.super.method() call
     superHandler = {
       get: (self, prop, receiver) => function () {
-        const method = self[prop], proto = gPO(self);
+        const proto = gPO(self), method = proto[prop];
         let result, parent = proto;
         do { parent = gPO(parent); }
         while ((method === parent[prop]));
-        try { result = sPO(self, parent)[prop].apply(self, arguments); }
+        try { result = parent[prop].apply(sPO(self, parent), arguments); }
         finally { sPO(self, proto); }
+        return result;
+      }
+    },
+    staticHandler = { // so similar, yet so different!
+      get: (self, prop, receiver) => function () {
+        const proto = gPO(self), method = self[prop];
+        let result, parent = proto;
+        while ((method === parent[prop])) parent = gPO(parent);
+        self.method = parent[prop];
+        try { result = self.method.apply(sPO(self, gPO(parent)), arguments); }
+        finally { sPO(self, proto).method = method; }
         return result;
       }
     },
@@ -79,7 +89,7 @@ const Class = ((Object, Reflect) => {'use strict';
             }
           }) :
         (Super ? class extends Super {} : class {}),
-      Static = {super: {get() { return new Proxy(Class, superHandler); }}},
+      Static = {super: {get() { return new Proxy(Class, staticHandler); }}},
       Prototype = {super: {get() { return new Proxy(this, superHandler); }}}
     ;
     ownProps(definition)
