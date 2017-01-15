@@ -23,6 +23,11 @@ If you want to know more about this project use cases, and also why it was born 
 [read the story in Medium](https://medium.com/@WebReflection/a-case-for-js-classes-without-classes-9e60b3b5992#.oh0mweilj).
 
 
+### Classtrophobic on ES5
+Using some extra runtime, avoiding the usage of `class` and `Proxy`,
+[Classtrophobic for ES5](https://github.com/WebReflection/classtrophobic-es5) works for all Mobile browsers, and IE11+ for Desktop.
+
+
 ### Ready for Refactory
 Semantics used in native ES6 classes are equivalent in Classtrophobic.
 

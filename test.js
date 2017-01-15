@@ -3,6 +3,7 @@ const Class = require('./classtrophobic');
 let obj;
 
 console.log('# Classtrophobic Test');
+console.time('classtrophobic');
 
 console.log('BasicClass');
 const BasicClass = Class({});
@@ -86,6 +87,8 @@ obj = new ComplexSubclass(1);
 console.assert(obj.push(2).join('-') === '1-2');
 
 
+
+console.log('DiffSuper');
 const DiffSuper = Class({
   extends: Array,
   push(...args) {
@@ -96,7 +99,6 @@ const DiffSuper = Class({
     return this.super.push(...args);
   }
 });
-console.log('DiffSuper');
 obj = new DiffSuper(0, 1);
 console.assert(obj._push(2) === 3);
 
@@ -247,5 +249,7 @@ console.assert(obj.splice(0, obj.length).join('-') === 'AS3-CS3-DS3');
 
 
 
+console.log('');
+console.timeEnd('classtrophobic');
 console.log('#green(*✔* OK)');
 console.log('');
