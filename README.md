@@ -28,6 +28,18 @@ Using some extra runtime, avoiding the usage of `class` and `Proxy`,
 [Classtrophobic for ES5](https://github.com/WebReflection/classtrophobic-es5) works for all Mobile browsers, and IE11+ for Desktop.
 
 
+### Which Version For My Targets?
+
+You can test live both [classtrophobic](https://webreflection.github.io/classtrophobic/test.html) and [classtrophobic-es5](https://webreflection.github.io/classtrophobic-es5/test.html).
+If the page turns out green, you're good to go!
+
+The main difference is that ES5 version has a greedy runtime when it comes to `super` usage,
+while this original version uses real classes and delegate to Proxy access the `super` resolution,
+working only when a method is accessed and per single method, as opposite of runtime setup for all methods in the es5 case.
+
+<sup><sub>Luckily overrides are not the most frequent thing ever.</sub></sup>
+
+
 ### Ready for Refactory
 Semantics used in native ES6 classes are equivalent in Classtrophobic.
 

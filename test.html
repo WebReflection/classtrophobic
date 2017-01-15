@@ -9,14 +9,8 @@
     my-element, my-div, button[is=my-button] { margin: 8px; }
     </style>
     <script defer src="//cdnjs.cloudflare.com/ajax/libs/document-register-element/1.3.0/document-register-element.js"></script>
+    <script defer src="classtrophobic.min.js"></script>
     <script>
-const Class=((a,b)=>{'use strict';/*! (C) 2017 Andrea Giammarchi - MIT Style License */const
-c=b.has,e=b.get,f=b.set,g=b.ownKeys,h=b.deleteProperty,i=b.defineProperty,j=b.apply,l=b.construct,m=a.getPrototypeOf,n=a.setPrototypeOf,o=a.defineProperties,q=a.getOwnPropertyDescriptor,
-s={isExtensible:x=>b.isExtensible(x.self),preventExtensions:x=>b.preventExtensions(x.self),getPrototypeOf:x=>m(x.self),setPrototypeOf:(x,y)=>n(x.self,y),getOwnPropertyDescriptor:(x,y)=>q(x.self,y),has:(x,y)=>c(x.self,y),get:(x,y,z)=>{
-if('super'===y&&!('self'in x))return function(){return x.self=l(x.super,arguments,x.class)};
-const A=e(x.self,y);return'function'==typeof A?function(){return A.apply(this===z?x.self:this,arguments)}:A},set:(x,y,z)=>f(x.self,y,z),deleteProperty:(x,y)=>h(x.self,y),defineProperty:(x,y,z)=>i(x.self,y,z),ownKeys:x=>g(x.self),apply:(x,y,z)=>j(x.self,y,z),construct:(x,y,z)=>l(x.self,y,z)},
-u={get:(x,y)=>function(){const z=x[y],A=m(x);let B,C=A;do C=m(C);while(z===C[y]);try{B=n(x,C)[y].apply(x,arguments)}finally{n(x,A)}return B}},
-w=new Set(['constructor','extends','static']);return function(y){const z=y.constructor,A=y.static,B=y.extends,C=y.hasOwnProperty('constructor')?B?class extends B{constructor(){const F={super:B,class:C};return z.apply(new Proxy(F,s),arguments)||F.self}}:class{constructor(){return z.apply(this,arguments)||this}}:B?class extends B{}:class{},D={super:{get(){return new Proxy(C,u)}}},E={super:{get(){return new Proxy(this,u)}}};return g(y).filter(F=>!w.has(F)).forEach(F=>{E[F]=q(y,F),E[F].enumerable=!1}),o(C.prototype,E),A&&g(A).forEach(F=>{D[F]=q(A,F),D[F].enumerable=!1}),o(C,D)}})(Object,Reflect);try{module.exports=Class}catch(a){}
 
     this.onload = function () {
       // Native Subclass
