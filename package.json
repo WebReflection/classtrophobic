@@ -23,6 +23,7 @@
   "devDependencies": {
     "babili": "0.0.9",
     "consolemd": "^0.1.2",
+    "coveralls": "^2.11.15",
     "istanbul": "^0.4.5"
   }
 }
