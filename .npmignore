@@ -1,4 +1,5 @@
 node_modules/*
+coverage/*
 .travis.yml
 .gitignore
 index.html

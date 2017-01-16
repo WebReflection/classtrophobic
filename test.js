@@ -249,6 +249,36 @@ console.assert(obj.splice(0, obj.length).join('-') === 'AS3-CS3-DS3');
 
 
 
+console.log('constructor Proxy');
+const CPB = Class({
+  extends: class CPA {},
+  constructor(...args) {
+    this.super(...args);
+    console.assert(Object.isExtensible(this));
+    console.assert(Object.setPrototypeOf(this, Object.getPrototypeOf(this)) === this);
+    this.key = 'value';
+    console.assert('key' in this);
+    console.assert(Object.getOwnPropertyDescriptor(this, 'key').value === 'value');
+    console.assert(delete this.key);
+  }
+});
+console.assert(!!new CPB(1, 2, 3));
+const FN = Class({
+  static: {prop: 123},
+  extends: Function,
+  constructor(...args) {
+    this.super();
+    console.assert(this(...args) === undefined);
+    console.assert(!!new this());
+  }
+});
+const Fn = new FN(1, 2, 3);
+console.assert(!Fn());
+console.assert(new Fn());
+console.assert(FN.prop === 123);
+
+
+
 console.log('');
 console.timeEnd('classtrophobic');
 console.log('#green(*✔* OK)');

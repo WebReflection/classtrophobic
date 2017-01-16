@@ -1,4 +1,4 @@
-# Classtrophobic [![build status](https://secure.travis-ci.org/WebReflection/classtrophobic.svg)](http://travis-ci.org/WebReflection/classtrophobic)
+# Classtrophobic [![build status](https://secure.travis-ci.org/WebReflection/classtrophobic.svg)](http://travis-ci.org/WebReflection/classtrophobic) [![Coverage Status](https://coveralls.io/repos/github/WebReflection/classtrophobic/badge.svg?branch=master)](https://coveralls.io/github/WebReflection/classtrophobic?branch=master)
 
 Zero Runtime, Babel Proof, Classes.
 

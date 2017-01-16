@@ -4,10 +4,10 @@
   "description": "coming soon",
   "main": "classtrophobic.js",
   "scripts": {
-    "test": "node test.js",
+    "test": "istanbul cover test.js",
     "size": "cat classtrophobic.js | wc -c;cat classtrophobic.min.js | wc -c;gzip -c classtrophobic.min.js | wc -c",
     "minify": "babili classtrophobic.js -o classtrophobic.min.js",
-    "clean": "sed -ie 's#//[^\\n]*##' classtrophobic.min.js; sleep 1; rm classtrophobic.min.jse"
+    "coveralls": "cat ./coverage/lcov.info | coveralls"
   },
   "keywords": [
     "class",
@@ -22,6 +22,7 @@
   "license": "MIT",
   "devDependencies": {
     "babili": "0.0.9",
-    "consolemd": "^0.1.2"
+    "consolemd": "^0.1.2",
+    "istanbul": "^0.4.5"
   }
 }

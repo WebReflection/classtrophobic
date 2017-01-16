@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for classtrophobic/classtrophobic.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../index.html">all files</a> / <a href="index.html">classtrophobic/</a> classtrophobic.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">93.44% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>57/61</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">85.71% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>24/28</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">80% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>8/10</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">92.59% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>50/54</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10×</span>
+<span class="cline-any cline-yes">9×</span>
+<span class="cline-any cline-yes">9×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-yes">12×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">25×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9×</span>
+<span class="cline-any cline-yes">9×</span>
+<span class="cline-any cline-yes">9×</span>
+<span class="cline-any cline-yes">9×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">25×</span>
+<span class="cline-any cline-yes">46×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">12×</span>
+<span class="cline-any cline-yes">12×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">25×</span>
+<span class="cline-any cline-yes">25×</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">25×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/*! (C) 2017 Andrea Giammarchi - MIT Style License */
+const Class = ((Object, Reflect) =&gt; {'use strict';
+  const
+    getProp = Reflect.get,
+    setProp = Reflect.set,
+    ownProps = Reflect.ownKeys,
+    defProp = Reflect.defineProperty,
+    reConstruct = Reflect.construct,
+    gPO = Object.getPrototypeOf,
+    sPO = Object.setPrototypeOf,
+    defProps = Object.defineProperties,
+    gOPD = Object.getOwnPropertyDescriptor,
+    constructorHandler = {
+      apply: (p, self, args) =&gt; Reflect.apply(p.self, self, args),
+      construct: (p, args, t) =&gt; reConstruct(p.self, args, t),
+      defineProperty: (p, k, d) =&gt; <span class="cstat-no" title="statement not covered" >defProp(p.self, k, d),</span>
+      deleteProperty: (p, k) =&gt; Reflect.deleteProperty(p.self, k),
+      get: (p, k, r) =&gt; {
+        if (k === 'super' &amp;&amp; !('self' in p)) {
+          return function () {
+            return (p.self = reConstruct(p.super, arguments, p.class));
+          };
+        }
+        const value = getProp(p.self, k);
+        return typeof value === 'function' ? <span class="fstat-no" title="function not covered" ><span class="branch-0 cbranch-no" title="branch not covered" >function () {</span></span>
+<span class="cstat-no" title="statement not covered" >          return value.apply(this === r ? p.self : this, arguments);</span>
+        } : value;
+      },
+      getOwnPropertyDescriptor: (p, k) =&gt; gOPD(p.self, k),
+      getPrototypeOf: (p) =&gt; gPO(p.self),
+      has: (p, k) =&gt; Reflect.has(p.self, k),
+      isExtensible: (p) =&gt; Reflect.isExtensible(p.self),
+      ownKeys: (p) =&gt; <span class="cstat-no" title="statement not covered" >ownProps(p.self),</span>
+      preventExtensions: (p) =&gt; <span class="cstat-no" title="statement not covered" >Reflect.preventExtensions(p.self),</span>
+      set: (p, k, v) =&gt; setProp(p.self, k, v),
+      setPrototypeOf: (p, v) =&gt; sPO(p.self, v)
+    },
+    superHandler = {
+      get: (self, prop, receiver) =&gt; function () {
+        const proto = gPO(self), method = proto[prop];
+        let result, parent = proto;
+        do { parent = gPO(parent); }
+        while ((method === parent[prop]));
+        try { result = parent[prop].apply(sPO(self, parent), arguments); }
+        finally { sPO(self, proto); }
+        return result;
+      }
+    },
+    staticHandler = {
+      get: (self, prop, receiver) =&gt; function () {
+        const proto = gPO(self), method = self[prop];
+        let result, parent = proto;
+        while ((method === parent[prop])) parent = gPO(parent);
+        self.method = parent[prop];
+        try { result = self.method.apply(sPO(self, gPO(parent)), arguments); }
+        finally { sPO(self, proto).method = method; }
+        return result;
+      }
+    },
+    reserved = new Set(['constructor', 'extends', 'static'])
+  ;
+  return function Classtrophobic(definition) {
+    const
+      Constructor = definition.constructor,
+      Statics = definition.static,
+      Super = definition.extends,
+      Class = definition.hasOwnProperty('constructor') ?
+        (Super ?
+          class extends Super {
+            constructor() {
+              const target = isFunction ? <span class="fstat-no" title="function not covered" >function () {</span>} : <span class="branch-1 cbranch-no" title="branch not covered" >{};</span>
+              target.super = Super;
+              target.class = Class;
+              return Constructor.apply(
+                new Proxy(target, constructorHandler),
+                arguments
+              ) || target.self;
+            }
+          } :
+          class {
+            constructor() {
+              return Constructor.apply(this, arguments) || this;
+            }
+          }) :
+        (Super ? class extends Super {} : class {}),
+      Static = Super ? {super: {get() { return new Proxy(Class, staticHandler); }}} : {},
+      Prototype = Super ? {super: {get() { return new Proxy(this, superHandler); }}} : {},
+      isFunction = Super ? Function.prototype.isPrototypeOf(Super) : false
+    ;
+    ownProps(definition)
+      .filter((key) =&gt; !reserved.has(key))
+      .forEach((key) =&gt; {
+        Prototype[key] = gOPD(definition, key);
+        Prototype[key].enumerable = false;
+      });
+    defProps(Class.prototype, Prototype);
+    if (Statics) ownProps(Statics).forEach((key) =&gt; {
+      Static[key] = gOPD(Statics, key);
+      Static[key].enumerable = false;
+    });
+    return defProps(Class, Static);
+  };
+})(Object, Reflect);
+try { module.exports = Class; } catch(o_O) {}
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Jan 16 2017 19:35:28 GMT+0000 (GMT)
+</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>
